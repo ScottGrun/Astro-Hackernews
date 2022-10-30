@@ -7,16 +7,23 @@ import tailwind from "@astrojs/tailwind";
 import solidJs from "@astrojs/solid-js";
 
 // https://astro.build/config
+import cloudflare from "@astrojs/cloudflare";
+
+// https://astro.build/config
 export default defineConfig({
   output: "server",
-  integrations: [tailwind({
-    config: {
-      applyBaseStyles: false
-    }
-  }), solidJs()],
+  integrations: [
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+    solidJs(),
+  ],
   vite: {
     ssr: {
-      external: ["svgo"]
-    }
-  }
+      external: ["svgo"],
+    },
+  },
+  adapter: cloudflare(),
 });
