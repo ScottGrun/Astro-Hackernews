@@ -7,8 +7,8 @@ const { comment } = Astro.props;
 
   <div class="grid-rows-[max-content_1fr] gap-2 hidden md:grid">
     <img
-      src={`https://robohash.org/${comment.user}.png`}
-      class="bg-orange-300 w-[28px] h-[28px] rounded-full overflow-hidden mt-1"
+      src={`https://robohash.org/${comment.user}.webp?ignoreext=false&size=64x64`}
+      class="bg-orange-300 w-[32px] h-[32px] rounded-full overflow-hidden mt-1"
       loading="lazy"
     />
     <div class="md:block border-r-[2px] w-[1px] h-full mx-auto"></div>
