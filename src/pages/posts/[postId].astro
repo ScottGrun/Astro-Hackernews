@@ -3,7 +3,7 @@ import Comment from "../../components/Comment.astro";
 import Post from "../../components/Post.astro";
 import VisuallyHidden from "../../components/util/VisuallyHidden.astro";
 import Layout from "../../layouts/Layout.astro";
-import { Icon } from "astro-icon";
+import chevronLeftSrc from "../../icons/chevron-left.svg";
 
 import { fetchPost } from "../../lib/api";
 const { postId } = Astro.params;
@@ -17,7 +17,7 @@ const post = await fetchPost(`item/${postId}`);
       href="/"
       class="font-bold text-sm flex gap-4 mb-6 text-interactive-primary"
     >
-      <Icon name="chevron-left" class="w-[8px] text-inherit" />
+      <img src={chevronLeftSrc} alt="" class="w-[8px] text-inherit" />
       <span> Go back</span>
     </a>
     <Post post={post} />

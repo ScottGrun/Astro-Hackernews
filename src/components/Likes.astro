@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import chevronUpSrc from "../icons/chevron-up.svg";
 import VisuallyHidden from "./util/VisuallyHidden.astro";
 
 export interface Props {
@@ -12,7 +12,7 @@ const { count } = Astro.props;
 <div
   class={" px-3 md:px-[9px] md:pt-[10px] py-[6px] bg-pill-background w-max flex gap-[10px] items-center rounded-lg md:flex-col"}
 >
-  <Icon name="chevron-up" class="w-3" />
+  <img src={chevronUpSrc} alt="" class="w-3" />
   <span class="post-meta-attribute"
     >{count || 0} <VisuallyHidden>Upvotes</VisuallyHidden>
   </span>

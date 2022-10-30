@@ -20,10 +20,5 @@ export default defineConfig({
     }),
     solidJs(),
   ],
-  vite: {
-    ssr: {
-      external: ["svgo"],
-    },
-  },
   adapter: cloudflare(),
 });

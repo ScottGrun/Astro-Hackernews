@@ -1,5 +1,5 @@
 ---
-import Icon from "astro-icon";
+import commentBubbleSrc from "../icons/comment-bubble.svg";
 import VisuallyHidden from "./util/VisuallyHidden.astro";
 
 export interface Props {
@@ -15,6 +15,6 @@ const { count, postId } = Astro.props;
   class="flex items-center gap-1 transition-colors hover:bg-pill-background px-2 py-1 rounded-lg h-max"
 >
   <VisuallyHidden>View {count} post comments</VisuallyHidden>
-  <Icon name="comment-bubble" class="w-[18px]" aria-hidden="true" />
+  <img src={commentBubbleSrc} alt="" class="w-[18px]" aria-hidden="true" />
   <span class="post-meta-attribute" aria-hidden="true">{count}</span>
 </a>
