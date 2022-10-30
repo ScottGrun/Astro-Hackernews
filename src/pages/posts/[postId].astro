@@ -1,0 +1,32 @@
+---
+import Comment from "../../components/Comment.astro";
+import Header from "../../components/Header.astro";
+import MobileHeader from "../../components/MobileHeader.astro";
+import Post from "../../components/Post.astro";
+import ContentContainer from "../../layouts/ContentContainer.astro";
+import Layout from "../../layouts/Layout.astro";
+import { fetchPost } from "../../lib/api";
+
+const { postId } = Astro.params;
+const post = await fetchPost(`item/${postId}`);
+---
+
+<Layout title={`Scott's HN | ${post.title}`}>
+  <MobileHeader title="TBD" />
+  <ContentContainer>
+    <main>
+      <Post post={post} className="col-span-3" />
+      <section class="mt-2 rounded-lg col-span-3">
+        <ul class="grid gap-3">
+          {
+            post.comments.map((comment) => (
+              <li class="bg-white rounded-lg p-4 ">
+                <Comment comment={comment} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+  </ContentContainer>
+</Layout>

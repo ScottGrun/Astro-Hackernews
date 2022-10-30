@@ -1,0 +1,25 @@
+---
+import VisuallyHidden from "./util/VisuallyHidden.astro";
+
+export interface Props {
+  pageName: string;
+  className?: string;
+}
+
+const { pageName } = Astro.props;
+---
+
+<header
+  class="h-[72px] px-6 py-4 flex items-center bg-gray-500 text-white md:hidden"
+>
+  <div class="mr-auto">
+    <h1 class="font-bold text-base leading-[22px]">{pageName}</h1>
+    <span class="font-medium text-sm leading-[19px] opacity-75">Scotts HN</span>
+  </div>
+  <button class="flex flex-col gap-1">
+    <VisuallyHidden>Open Nav</VisuallyHidden>
+    <div class="w-7 h-[3px] bg-white"></div>
+    <div class="w-7 h-[3px] bg-white"></div>
+    <div class="w-7 h-[3px] bg-white"></div>
+  </button>
+</header>

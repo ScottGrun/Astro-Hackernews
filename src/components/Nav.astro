@@ -1,0 +1,13 @@
+---
+const { className } = Astro.props;
+---
+
+<nav class={"bg-white p-6 rounded-lg h-fit max-w-[256px] " + className}>
+  <ul class="flex flex-wrap gap-x-3">
+    <li><a class="pill" href="/top">Home</a></li>
+    <li><a class="pill" href="/new">New Posts</a></li>
+    <li><a class="pill" href="/show">Show HN</a></li>
+    <li><a class="pill" href="/ask">Ask HN</a></li>
+    <li><a class="pill" href="/jobs">Job Postings</a></li>
+  </ul>
+</nav>

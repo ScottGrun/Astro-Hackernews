@@ -1,0 +1,35 @@
+---
+import Header from "../components/Header.astro";
+import MobileHeader from "../components/MobileHeader.astro";
+import Nav from "../components/Nav.astro";
+import PageHeader from "../components/PageHeader.astro";
+import Post from "../components/Post.astro";
+import { mapPageToName } from "../helpers/mapNames";
+import ContentContainer from "../layouts/ContentContainer.astro";
+import Layout from "../layouts/Layout.astro";
+import { fetchPage } from "../lib/api";
+
+const postType = Astro.params.postType || "top";
+const posts = await fetchPage(postType);
+const pageName = mapPageToName[postType];
+---
+
+<Layout title="Welcome to Astro.">
+  <MobileHeader pageName="All Posts" />
+  <ContentContainer>
+    <Header pageName={pageName} />
+    <main>
+      <ul
+        class="grid auto-rows-max gap-4 col-span-3 xl:col-span-2 xl:col-start-2 xl:row-start-1 md:mt-4"
+      >
+        {
+          posts.map((post) => (
+            <li>
+              <Post post={post} />
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+  </ContentContainer>
+</Layout>

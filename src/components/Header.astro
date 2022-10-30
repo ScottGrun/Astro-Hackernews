@@ -1,0 +1,14 @@
+---
+import Nav from "./Nav.astro";
+import PageHeader from "./PageHeader.astro";
+const { pageName } = Astro.props;
+---
+
+<header class="col-start-1">
+  <div
+    class="xl:sticky xl:top-[49px] grid grid-cols-[1fr_max-content] xl:grid-cols-1 xl:gap-y-5 gap-4"
+  >
+    <PageHeader pageName={pageName} />
+    <Nav className="hidden md:flex  " />
+  </div>
+</header>

@@ -1,0 +1,75 @@
+---
+import Comments from "./Comments.astro";
+import Likes from "./Likes.astro";
+
+const { post, className } = Astro.props;
+---
+
+<article class={"card-grid bg-white p-6 rounded-lg " + className}>
+  <div class="content">
+    <a
+      href={post.url}
+      class="font-bold text-base text-primary-header block md:tracking-[-0.25px]"
+      >{post.title}</a
+    >
+    <span
+      class="mt-[9px] md:mt-0 inline-block text-primary-text text-sm leading-[19px]"
+      >by <a href={`/users/${post.user}`} class="underline">{post.user}</a>
+      {post.time_ago}</span
+    >
+
+    <!-- TODO: Implement Search by domain when clicked -->
+    {
+      post.domain && (
+        <a
+          href={post.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="pill"
+        >
+          {post.domain}
+        </a>
+      )
+    }
+  </div>
+  <div class="likes mt-4 md:mt-0">
+    <Likes count={post.points} />
+  </div>
+  <div class="comments flex justify-end mt-4 md:mt-0 md:items-center">
+    <Comments postId={post.id} count={post.comments_count} />
+  </div>
+</article>
+
+<style>
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, max-height);
+    grid-auto-columns: 1fr 1fr 1fr;
+    gap: 0px 24px;
+    grid-auto-flow: row dense;
+    grid-template-areas:
+      "content content"
+      "likes comments";
+  }
+
+  .content {
+    grid-area: content;
+  }
+
+  .likes {
+    grid-area: likes;
+  }
+
+  .comments {
+    grid-area: comments;
+  }
+
+  /* Tablet */
+  @media (min-width: 768px) {
+    .card-grid {
+      grid-template-columns: 50px 1fr max-content;
+      grid-template-areas: "likes content comments";
+    }
+  }
+</style>
