@@ -7,7 +7,6 @@ const fetchApi = async (endpoint: string) => {
 
 export const fetchPost = async (path: string) => {
   const endpoint = `https://api.hackerwebapp.com/${path}`;
-  console.log(endpoint);
   return fetchApi(endpoint);
 };
 

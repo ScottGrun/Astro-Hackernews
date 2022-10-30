@@ -31,3 +31,7 @@ body {
 a {
   word-wrap: anywhere;
 }
+
+pre {
+  white-space: pre-wrap;
+}

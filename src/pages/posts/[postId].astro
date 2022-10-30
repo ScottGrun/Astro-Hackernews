@@ -1,32 +1,37 @@
 ---
 import Comment from "../../components/Comment.astro";
-import Header from "../../components/Header.astro";
-import MobileHeader from "../../components/MobileHeader.astro";
 import Post from "../../components/Post.astro";
-import ContentContainer from "../../layouts/ContentContainer.astro";
+import VisuallyHidden from "../../components/util/VisuallyHidden.astro";
 import Layout from "../../layouts/Layout.astro";
-import { fetchPost } from "../../lib/api";
+import { Icon } from "astro-icon";
 
+import { fetchPost } from "../../lib/api";
 const { postId } = Astro.params;
 const post = await fetchPost(`item/${postId}`);
 ---
 
 <Layout title={`Scott's HN | ${post.title}`}>
-  <MobileHeader title="TBD" />
-  <ContentContainer>
-    <main>
-      <Post post={post} className="col-span-3" />
-      <section class="mt-2 rounded-lg col-span-3">
-        <ul class="grid gap-3">
-          {
-            post.comments.map((comment) => (
-              <li class="bg-white rounded-lg p-4 ">
-                <Comment comment={comment} />
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-    </main>
-  </ContentContainer>
+  <!-- <MobileHeader title="TBD" /> -->
+  <main class="px-4 flex flex-col w-full xl:max-w-[825px] xl:p-4 mt-6">
+    <a
+      href="/"
+      class="font-bold text-sm flex gap-4 mb-6 text-interactive-primary"
+    >
+      <Icon name="chevron-left" class="w-[8px] text-inherit" />
+      <span> Go back</span>
+    </a>
+    <Post post={post} />
+    <section class="mt-6 rounded-lg">
+      <VisuallyHidden><h2>Comments Section</h2></VisuallyHidden>
+      <ul class="grid gap-3">
+        {
+          post.comments.map((comment) => (
+            <li class="bg-white rounded-lg p-4 ">
+              <Comment comment={comment} />
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
 </Layout>

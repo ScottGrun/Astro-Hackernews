@@ -3,7 +3,7 @@ export const mapPagePath = {
   new: "newest",
   show: "show",
   ask: "ask",
-  job: "jobs",
+  jobs: "jobs",
 };
 
 export const mapPageToName = {

@@ -8,7 +8,7 @@ const { comment } = Astro.props;
   <div class="grid-rows-[max-content_1fr] gap-2 hidden md:grid">
     <img
       src={`https://robohash.org/${comment.user}.png`}
-      class="bg-orange-300 w-[28px] h-[28px] rounded-full overflow-hidden mt-0.5"
+      class="bg-orange-300 w-[28px] h-[28px] rounded-full overflow-hidden mt-1"
       loading="lazy"
     />
     <div class="md:block border-r-[2px] w-[1px] h-full mx-auto"></div>
@@ -23,7 +23,7 @@ const { comment } = Astro.props;
       />
       <div>
         <a
-          class="font-bold text-xs tracking-[-0.18px] text-primary-header"
+          class="font-bold text-xs md:text-sm tracking-[-0.18px] text-primary-header"
           href={`/users/${comment.user}`}>@{comment.user}</a
         >
         <span class="font-normal text-xs text-primary-text block"
@@ -31,13 +31,13 @@ const { comment } = Astro.props;
         >
       </div>
     </div>
-    <div class="prose prose-sm mt-2 max-w-none" set:html={comment.content}>
+    <div class="prose prose-sm max-w-none mt-2 pb-2" set:html={comment.content}>
     </div>
 
     <ul class="border-l-2 md:border-none">
       {
         comment.comments.map((comment) => (
-          <li class="pt-4 md:ml-[-12px] pl-3 md:pl-0">
+          <li class="pt-1 md:ml-[-12px] pl-3 md:pl-0">
             <Astro.self comment={comment} nested={true} />
           </li>
         ))

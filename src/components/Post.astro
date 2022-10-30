@@ -32,12 +32,20 @@ const { post, className } = Astro.props;
       )
     }
   </div>
-  <div class="likes mt-4 md:mt-0">
-    <Likes count={post.points} />
-  </div>
-  <div class="comments flex justify-end mt-4 md:mt-0 md:items-center">
-    <Comments postId={post.id} count={post.comments_count} />
-  </div>
+  {
+    post.points ? (
+      <div class="likes mt-4 md:mt-0">
+        <Likes count={post.points} />
+      </div>
+    ) : null
+  }
+  {
+    post.comments_count ? (
+      <div class="comments flex justify-end mt-4 md:mt-0 md:items-center">
+        <Comments postId={post.id} count={post.comments_count} />
+      </div>
+    ) : null
+  }
 </article>
 
 <style>
